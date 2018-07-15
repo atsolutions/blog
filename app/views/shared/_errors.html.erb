@@ -1,0 +1,18 @@
+<% if obj.errors.any? %>
+    <div class="alert alert-danger alert-dismissible fade show col-sm-8 offset-sm-2">
+        <strong>
+        <%= pluralize(obj.errors.count, "errror") %> while creating article
+        </strong>
+        <div class =  "offset-sm-1">
+            <% obj.errors.full_messages.each do |msg|%> 
+                    <ul class="list-group list-group-flush" >
+                    <li> <%= msg %>
+                    </li>
+                    </ul>
+            <% end %>
+        </div>
+         <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+    <span aria-hidden="true">&times;</span>
+    </button>
+    </div>
+<% end %>

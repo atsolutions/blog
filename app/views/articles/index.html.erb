@@ -9,7 +9,7 @@
             </div>
        
         <div class = "card-body article-body">
-            <%= truncate(article.description, length: 50) %> 
+            <%= truncate(article.description, length: 50) %>
             <div class="article-meta-details">
                 <small> Created by:<%= article.user.username%>,
                 <%= time_ago_in_words(article.created_at) %> ago 

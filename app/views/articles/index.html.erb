@@ -1,4 +1,10 @@
 <h1 align="center"> Listing all articles </h1>
-
+    <div align="center"> 
+    <%= will_paginate(@articles, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center pagination-sm') %>
+    </div>
 <%= render 'article', obj: @articles %>
+
+<div align="center"> 
+    <%= will_paginate(@articles, :renderer => WillPaginate::ActionView::Bootstrap4LinkRenderer, class: 'justify-content-center pagination-sm') %>
+</div>
 

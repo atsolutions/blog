@@ -1,27 +1,4 @@
 <h1 align="center"> Listing all articles </h1>
 
-<% @articles.each do |article| %>
-<div class = "row">
-<div class="col-sm-8 offset-sm-2">
-        <div class = "card  mb-3 bg-light">
-            <div class = "card-header article-title">
-                <%= link_to article.title, article_path(article) %>
-            </div>
-       
-        <div class = "card-body article-body">
-            <%= truncate(article.description, length: 50) %>
-            <div class="article-meta-details">
-                <small> Created by:<%= article.user.username%>,
-                <%= time_ago_in_words(article.created_at) %> ago 
-                last updated <%= time_ago_in_words(article.updated_at)%> ago </small>
-            </div>
-        <div class = "article-actions">
-            <%= link_to 'Edit this article', edit_article_path(article), class: "btn btn-primary btn-sm" %>
-            <%= link_to 'Delete article', article_path(article), class: "btn btn-danger btn-sm",  method: :delete, data: {confirm: "U sure?"}  %>
-         </div>
-         </div>
-          </div>
-          </div>
-          </div>
-<% end %>
+<%= render 'article', obj: @articles %>
 

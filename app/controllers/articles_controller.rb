@@ -1,12 +1,15 @@
 class ArticlesController < ApplicationController
-before_action :set_article, only: [:show, :edit, :update, :destroy]
+
+    before_action :set_article, only: [:show, :edit, :update, :destroy]
+    before_action :require_user, except: [:index, :show]
+    before_action :require_same_user, only: [:edit, :destroy, :update]
     def new 
         @article = Article.new
     end
 
     def create
         @article = Article.new  (article_params)
-        @article.user = User.first
+        @article.user = current_user
         if @article.save
             flash[:success] = "Article was created" 
             redirect_to article_path(@article)
@@ -47,6 +50,13 @@ before_action :set_article, only: [:show, :edit, :update, :destroy]
 
     def set_article
         @article = Article.find(params[:id])
+    end
+
+    def require_same_user
+        if current_user != @article.user
+            flash[:danger] = "You are no authorized to edit this article"
+            redirect_to root_path
+        end
     end
 
 

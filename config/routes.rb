@@ -3,7 +3,7 @@ Rails.application.routes.draw do
   get 'about', to: 'pages#about'
   
   resources :articles
-  resource :categories, except: [:destroy]
+  resources :categories, except: [:destroy]
   get 'signup', to: 'users#new'
   resources :users, except: [:new]
   get 'login', to: 'sessions#new'

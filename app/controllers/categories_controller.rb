@@ -1,5 +1,6 @@
 class CategoriesController < ApplicationController
 
+    before_action :require_admin, except: [:index, :show]
     def create
         @category = Category.new  (category_params)
         if @category.save
